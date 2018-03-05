@@ -5,6 +5,6 @@ import com.vo.*;
 
 public interface ChargeRuleDao {
 	public List<ChargeRule> getAll();
-	public void edit(ChargeRule cr);
+	public void edit(String func_name,String[] charge_code);
 	public List<ChargeRule> getOne();
 }

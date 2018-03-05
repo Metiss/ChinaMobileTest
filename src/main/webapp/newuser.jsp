@@ -1,11 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <META content="MSHTML 6.00.2600.0" name=GENERATOR>
 <link href="style.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.9.1.min.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+	/* function check()
+	{
+		document.getElementById("aa").style.display="";
+	} */
+	
+	$(function(){
+		 $("#mobile_number").click(function(){
+			$("#t_mobiles").fadeIn();
+		})
+
+		 $("#bt_close").click(function(){
+			$("#t_mobiles").fadeOut();
+		})
+		 
+		 /* $.getJSON("page.do",{},function(data){
+			 var table=$("#table");
+			 var tr=null;
+			 for(var i=0;i<data.length;i++){
+				if(i%3==0){
+					tr=$("<tr>");
+					table.append(tr);
+				}
+				var td=$("<td></td>");
+				tr.append(td);
+				var ck_mobile=$("<input type='radio' id='mobilesnumber' name='mobilesnumber'>").val(data[i].mobilenumber);
+				td.append(ck_mobile);
+				 
+				var span=$("<span></span>").html(data[i].mobilenumber);
+				td.append(span);
+		}
+		}) */
+		$("#mobilesnumber").click(function(){
+			$("#mobile_number").val("0");
+			$("#mobile_number").val($(this).next().html());
+		})
+	})
+
+</script>
 <title>中国移动业务管理系统</title>
 </head>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
@@ -157,7 +199,7 @@
             src="images/blank.gif" width=1 border=0><img src="images/Arrow1.gif" width="23" height="23"></TD>
           <TD width=165 height="29" bgColor=#7691c7>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
             class=nav 
-            href="Logout.htm">退出</A></TD>
+            href="logout.do">退出</A></TD>
         </TR>
         <TR>
           <TD bgColor=#ffffff colSpan=2><IMG height=1 
@@ -184,12 +226,28 @@
     <TD height="600" bgColor=#f1f3f9>
     
      <form method="POST" action="newuser.do">
-      <p>手机号码：<input type="text" name="T1" size="20"></p>
-      <p>漫游状态：<input type="radio" name="R1" value="V4" checked>省内漫游 <input type="radio" name="R1" value="V5">国内漫游 
-      <input type="radio" name="R1" value="V6">国际漫游</p>
-      <p>通话级别：<input type="radio" value="V1" checked name="R2">本地通话 
-      <input type="radio" name="R2" value="V2">国内长途 <input type="radio" name="R2" value="V3">国际长途</p>
-      <p>客户ID：<input type="text" name="T2" size="20" value="${customer.customer_id}" readonly></p>
+     
+      <div>
+      <p>手机号码：<input type="text" name="mobile_number" id="mobile_number" size="20"> </p>
+      	<div id="t_mobiles" style="position:relative;left:80px;top:-15px;width:200px;height:200px;background-color:white;border-style:double;border-color:slategray;">
+		<div style="float:right;">
+		<input type="button" id="bt_close" value="关闭" />
+		</div>
+		<div style="clear: both">
+		<table id="table" style="text-align:center">
+			<c:forEach items="${pageinfo.list}" var="c">
+				<tr><td><input type="radio" id="mobilesnumber" name="mobilesnumber" value="${c.mobilenumber}"><span>${c.mobilenumber}</span></td></tr>
+			</c:forEach>
+			<tr><td><a href="page.do?currentPage=${pageinfo.currentPage+1}" >换一批</a></td></tr>
+		</table>	
+		</div>
+  	 </div>
+     </div>
+      <p>漫游状态：<input type="radio" name="roaming_status" value="P" checked>省内漫游 <input type="radio" name="roaming_status" value="D">国内漫游 
+      <input type="radio" name="roaming_status" value="I">国际漫游</p>
+      <p>通话级别：<input type="radio" value="L" checked name="com_level">本地通话 
+      <input type="radio" name="com_level" value="D">国内长途 <input type="radio" name="com_level" value="I">国际长途</p>
+      <p>客户ID：<input type="text" name="customer_id" size="20" value="${customer.customer_id}" readonly></p>
       
       <p><input type="submit" value="完成>>" name="B1"><input type="reset" value="全部重写" name="B2"></p>
     </form>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.oracle.jdbc.util.Dao;
 import com.oracle.jdbc.util.Transactional;
+import com.util.PageInfo;
 import com.vo.Mobile;
 
 public class MobileDaoImpl implements MobileDao {
@@ -15,9 +16,27 @@ public class MobileDaoImpl implements MobileDao {
 		}
 	}
 	@Override
-	public Mobile getOne() {
+	@Transactional
+	public List<Mobile> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return Dao.query("select MOBILE_NUMBER mobilenumber from tmobiles where IS_AVAILABLE='Y'",Mobile.class);
+	}
+	@Override
+	@Transactional
+	public void UpdateMobile(String mobilenumber){
+		Dao.executeSql("update tmobiles set IS_AVAILABLE='N' where MOBILE_NUMBER=?", mobilenumber);
+	}
+	@Override
+	public void getAPageAll(PageInfo info) {
+		Object[] obj=Dao.queryOne("select count(*) from tmobiles");
+		
+		int count=((Long)obj[0]).intValue();
+		info.setRecordcount(count);
+		
+		List<Mobile> list=Dao.query("select MOBILE_NUMBER mobilenumber,MOBILE_TYPE mobiletype,CARD_NUMBER cardnumber,IS_AVAILABLE isavailable from tmobiles limit ?,?", Mobile.class,(info.getCurrentPage()-1)*info.getPagesize(),info.getPagesize()); 
+		System.out.println(list);
+		
+		info.setList(list);
 	}
 
 }

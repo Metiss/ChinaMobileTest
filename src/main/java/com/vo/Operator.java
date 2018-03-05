@@ -1,14 +1,14 @@
 package com.vo;
 
-public class Operater {
-	int operator_id;
+public class Operator {
+	String operator_id;
 	String operator_name;
 	String operator_pwd;
-	String is_admin;
-	public int getOperator_id() {
+	int is_admin;
+	public String getOperator_id() {
 		return operator_id;
 	}
-	public void setOperator_id(int operator_id) {
+	public void setOperator_id(String operator_id) {
 		this.operator_id = operator_id;
 	}
 	public String getOperator_name() {
@@ -23,10 +23,10 @@ public class Operater {
 	public void setOperator_pwd(String operator_pwd) {
 		this.operator_pwd = operator_pwd;
 	}
-	public String getIs_admin() {
+	public int getIs_admin() {
 		return is_admin;
 	}
-	public void setIs_admin(String is_admin) {
+	public void setIs_admin(int is_admin) {
 		this.is_admin = is_admin;
 	}
 	

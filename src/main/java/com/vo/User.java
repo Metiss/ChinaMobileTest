@@ -1,15 +1,15 @@
 package com.vo;
 
 public class User {
-	int mobile_number;
+	String mobile_number;
 	String roaming_status;
 	String com_level;
 	String customer_id;
 	String is_available;
-	public int getMobile_number() {
+	public String getMobile_number() {
 		return mobile_number;
 	}
-	public void setMobile_number(int mobile_number) {
+	public void setMobile_number(String mobile_number) {
 		this.mobile_number = mobile_number;
 	}
 	public String getRoaming_status() {

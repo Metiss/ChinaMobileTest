@@ -1,13 +1,13 @@
 package com.vo;
 
 public class ChargeRule {
-	String func_id;
+	int func_id;
 	String charge_code;
 	String func_name;
-	public String getFunc_id() {
+	public int getFunc_id() {
 		return func_id;
 	}
-	public void setFunc_id(String func_id) {
+	public void setFunc_id(int func_id) {
 		this.func_id = func_id;
 	}
 	public String getCharge_code() {

@@ -33,6 +33,8 @@ public class CustomerNewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");
 		String id_type=request.getParameter("id_type");
 		String id_number=request.getParameter("id_number");
 		

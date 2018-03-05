@@ -1,7 +1,9 @@
-<HTML>
-<HEAD>
-<TITLE>中国移动业务管理系统</TITLE>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=gb2312">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <!--
 body {
@@ -11,7 +13,8 @@ body {
 -->
 </style>
 <link href="style.css" rel="stylesheet" type="text/css">
-</HEAD>
+<title>涓浗绉诲姩涓氬姟绠＄悊绯荤粺</title>
+</head>
 <BODY LEFTMARGIN=0 MARGINWIDTH=0>
 <!-- ImageReady Slices (index.psd) -->
 <TABLE WIDTH=750 BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
@@ -30,24 +33,24 @@ body {
 			<IMG SRC="images/index_04.gif" WIDTH=444 HEIGHT=363 ALT=""></TD>
 		<TD width="306" height="185" background="images/index_05.gif"><table width="250" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td><form  action=main.htm method=post name=login>
+            <td><form  action="login.do" method="post">
               <div align="center">
                 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="30"><div align="center"><strong>用户名：</strong>
-                        <INPUT name=loginname type="text" value="">
+                    <td height="30"><div align="center"><strong>鐢ㄦ埛鍚嶏細</strong>
+                        <INPUT name="operator_id" type="text" value="">
                         <br>
                     </div></td>
                   </tr>
                   <tr>
-                    <td height="30"><div align="center"><strong>密&nbsp;&nbsp;&nbsp;码：</strong>
-                        <INPUT name=passwords type=password value="">
+                    <td height="30"><div align="center"><strong>瀵�&nbsp;&nbsp;&nbsp;鐮侊細</strong>
+                        <INPUT name="operator_pwd" type=password value="">
                     </div></td>
                   </tr>
                   <tr>
                     <td height="30">
                       <div align="center">
-                        <INPUT class=f2 type=submit size=4 value=进入系统 name=Submit>
+                        <INPUT class=f2 type=submit size=4 value=杩涘叆绯荤粺 name=Submit>
                       </div></td>
                   </tr>
                 </table>
@@ -63,4 +66,4 @@ body {
 </TABLE>
 <!-- End ImageReady Slices -->
 </BODY>
-</HTML>
+</html>
